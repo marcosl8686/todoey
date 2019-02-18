@@ -1,15 +1,17 @@
 //
-//  item.swift
+//  Data.swift
 //  todoey
 //
-//  Created by Marcos Lee on 12/3/18.
-//  Copyright © 2018 Marcos Lee. All rights reserved.
+//  Created by Marcos Lee on 2/3/19.
+//  Copyright © 2019 Marcos Lee. All rights reserved.
 //
 
 import Foundation
+import RealmSwift
 
-class Item: Codable {
-    var title: String = ""
-    var done: Bool = false
-    
+class Item: Object {
+    @objc dynamic var title: String = ""
+    @objc dynamic var done: Bool = false
+    @objc dynamic var dateCreated: Date?
+    var parentCategory = LinkingObjects(fromType: Category.self, property: "items")
 }
